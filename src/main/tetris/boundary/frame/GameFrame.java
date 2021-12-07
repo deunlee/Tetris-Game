@@ -103,6 +103,9 @@ public class GameFrame extends JFrame implements KeyListener {
             case KeyEvent.VK_TAB:
                 if (!game.isPlaying()) game.setDifficulty((game.getDifficulty() + 1) % 3);
                 break;
+            case KeyEvent.VK_F1:
+                if (!game.isPlaying() && !game.isGameOver()) {
+                    new RankingFrame();
                 }
                 break;
         }
