@@ -24,6 +24,8 @@ public class PreviewPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+//        g.setColor(Color.GRAY);
+//        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
         if (game.isPlaying()) {
             g.setColor(Color.GRAY);
             g.setFont(font);
