@@ -63,6 +63,8 @@ public class GameFrame extends JFrame implements KeyListener {
                 }
             }
             repaint();
+            // repaint() 호출시 하위 컴포넌트(ex: 패널)들이 다시 그려짐
+            // (하위 컴포넌트의 paintComponent() 가 호출됨)
         }
     }
 
@@ -90,11 +92,17 @@ public class GameFrame extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_S:
-                game.startGame();
+                if (!game.isPlaying() && !game.isGameOver()) game.startGame();
+                break;
+            case KeyEvent.VK_R:
+                if (game.isGameOver()) game.resetGame();
                 break;
             case KeyEvent.VK_P:
-                if (game.isPlaying()) {
-                    game.pauseGame();
+                if (game.isPlaying()) game.pauseGame();
+                break;
+            case KeyEvent.VK_TAB:
+                if (!game.isPlaying()) game.setDifficulty((game.getDifficulty() + 1) % 3);
+                break;
                 }
                 break;
         }

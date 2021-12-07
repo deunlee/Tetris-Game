@@ -4,14 +4,19 @@ import main.tetris.entity.block.BaseBlock;
 import main.tetris.entity.block.BlockFactory;
 
 public class Game {
-    private Board board;
+    private Board     board;
     private BaseBlock nextBlock;
 
+    // 게임 상태
+    // stopped -> playing -> game over
+    //            playing -> paused   -> playing
+    //            playing -> dropping -> playing
     private boolean isPlaying  = false;
     private boolean isPaused   = false;
     private boolean isDropping = false;
     private boolean isGameOver = false;
 
+    private int difficulty = 1;
     private int distance   = 0; // 현재 블럭이 내려간 거리
     private int totalScore = 0;
 
@@ -20,6 +25,9 @@ public class Game {
     }
 
     public void resetGame() {
+        difficulty = 1;
+        distance   = 0;
+        totalScore = 0;
         board      = new Board();
         nextBlock  = BlockFactory.getRandomBlock();
         isPlaying  = false;
@@ -41,7 +49,12 @@ public class Game {
     public Board         getBoard()      { return board;                }
     public BaseBlock     getNextBlock()  { return nextBlock;            }
     public int           getFullLines()  { return board.getFullLines(); }
+    public int           getDifficulty() { return difficulty;           }
     public int           getTotalScore() { return totalScore;           }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
 
     public boolean isPlaying()  { return isPlaying;  }
     public boolean isPaused()   { return isPaused;   }
@@ -49,11 +62,11 @@ public class Game {
     public boolean isGameOver() { return isGameOver; }
 
     public long getIterationDelay() {
-        return (long) (((11 - getLevel()) * 0.05) * 1000);
+        return (long)(((11 - getLevel()) * 0.05) * 1000 + 100 - difficulty * 100);
     }
 
     public int getScore() {
-        return ((21 + (3 * getLevel())) - distance);
+        return getLevel() * 3 + (board.getHeight() + 1 - distance);
     }
 
     public int getLevel() {
@@ -65,6 +78,8 @@ public class Game {
             return 1;
         }
     }
+
+
 
     public void rotate()    { board.rotate();    }
     public void drop()      { isDropping = true; }
