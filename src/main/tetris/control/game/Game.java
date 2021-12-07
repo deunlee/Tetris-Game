@@ -79,8 +79,6 @@ public class Game {
         }
     }
 
-
-
     public void rotate()    { board.rotate();    }
     public void drop()      { isDropping = true; }
     public void moveLeft()  { board.moveLeft();  }

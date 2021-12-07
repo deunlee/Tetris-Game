@@ -6,7 +6,7 @@ import main.tetris.entity.Points;
 
 public class BaseBlock {
     private final Color  color;
-    public final Point  center;
+    private final Point  center;
     private final Points points;
 
     BaseBlock(final Color color, final Points points) {
