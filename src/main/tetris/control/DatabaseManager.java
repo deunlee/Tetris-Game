@@ -2,15 +2,11 @@ package main.tetris.control;
 
 import main.tetris.entity.user.User;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 public class DatabaseManager {
     private static final String USER_DB_PATH = "users.db";
-
     private static final DatabaseManager instance;
 
     private DatabaseManager() {}
@@ -30,14 +26,16 @@ public class DatabaseManager {
 
     public ArrayList<User> getUsers() {
         try {
-            final FileInputStream   fis   = new FileInputStream(USER_DB_PATH);
-            final ObjectInputStream ois   = new ObjectInputStream(fis);
-            final ArrayList<User>   users = (ArrayList<User>)ois.readObject();
+            final FileInputStream fis = new FileInputStream(USER_DB_PATH);
+            final ObjectInputStream ois = new ObjectInputStream(fis);
+            final ArrayList<User> users = (ArrayList<User>) ois.readObject();
             ois.close();
             System.out.println("getUser: " + users);
             return users;
+        } catch (FileNotFoundException e) { // pass
+            return new ArrayList<User>();
         } catch (Exception e) {
-//            System.out.println(e);
+            System.out.println(e);
             return new ArrayList<User>();
         }
     }

@@ -48,7 +48,7 @@ public class MainFrame extends BaseFrame {
                 break;
             case "Ranking":
                 new RankingFrame();
-                break;
+                return;
             case "Login":
                 new LoginFrame();
                 break;

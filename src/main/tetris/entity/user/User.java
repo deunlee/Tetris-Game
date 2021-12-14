@@ -2,7 +2,7 @@ package main.tetris.entity.user;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User implements Serializable, Comparable<User> {
     private final String name;
     private final String password;
     private int          bestScore;
@@ -22,6 +22,11 @@ public class User implements Serializable {
 
     public boolean checkPassword(final String password) {
         return this.password.equals(password);
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return o.getBestScore() - getBestScore();
     }
 
     @Override

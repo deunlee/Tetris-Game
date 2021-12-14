@@ -116,7 +116,6 @@ public class GameFrame extends JFrame implements KeyListener {
             case KeyEvent.VK_R:
                 if (!game.isPlaying() && !game.isGameOver()) {
                     new RankingFrame();
-                    close();
                 }
                 break;
             case KeyEvent.VK_Q:
