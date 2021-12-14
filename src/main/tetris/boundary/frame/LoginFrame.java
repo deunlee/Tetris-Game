@@ -9,8 +9,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class LoginFrame extends BaseFrame {
-    private final JTextField txtName;
-    private final JTextField txtPass;
+    private final JTextField     txtName;
+    private final JPasswordField txtPass;
 
     public LoginFrame() {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

@@ -11,7 +11,7 @@ public class MainFrame extends BaseFrame {
     public MainFrame() {
         super();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Tetris Game - v.1.0.0");
+        setTitle("Tetris Game - v.1.1");
         setBounds(0, 0, 600, 520);
         setLayout(null);
         setLocationRelativeTo(null);
@@ -29,7 +29,6 @@ public class MainFrame extends BaseFrame {
         final JButton btnExit     = addButton("Exit",      120, 370, 360, 50);
 
         if (UserManager.getCurrentUser() == null) {
-            btnPlay.setEnabled(false);
             btnLogout.setVisible(false);
         } else {
             btnLogin.setVisible(false);
@@ -44,7 +43,12 @@ public class MainFrame extends BaseFrame {
         final JButton button = (JButton)e.getSource();
         switch (button.getText()) {
             case "Play Game":
-                new GameFrame();
+                if (UserManager.getCurrentUser() == null) {
+                    JOptionPane.showMessageDialog(null, "Please login first.", "Login", JOptionPane.WARNING_MESSAGE);
+                    return;
+                } else {
+                    new GameFrame();
+                }
                 break;
             case "Ranking":
                 new RankingFrame();
