@@ -17,7 +17,7 @@ public class GameStatusPanel extends JPanel {
         this.fontLarge = new Font("Consolas", Font.BOLD, 28);
         this.fontSmall = new Font("Consolas", Font.PLAIN, 18);
 
-        setSize(new Dimension(300, 240));
+        setSize(new Dimension(300, 230));
         setBackground(Color.BLACK);
     }
 
@@ -45,11 +45,12 @@ public class GameStatusPanel extends JPanel {
 
             g.setFont(fontSmall);
             g.setColor(Color.GRAY);
-            g.drawString("Move   : Left/Right", 0, 120);
-            g.drawString("Rotate : Up",         0, 150);
-            g.drawString("Drop   : Space/Down", 0, 180);
-            g.drawString("Difficulty : Tab",    0, 210);
-            g.drawString("Ranking    : F1",     0, 240);
+            g.drawString("Move   : Left/Right", 0, 110);
+            g.drawString("Rotate : Up",         0, 130);
+            g.drawString("Drop   : Space/Down", 0, 150);
+            g.drawString("Difficulty : Tab",    0, 180);
+            g.drawString("Ranking    : R",      0, 200);
+            g.drawString("Quit Game  : Q",      0, 220);
             return;
         }
 
@@ -68,7 +69,7 @@ public class GameStatusPanel extends JPanel {
             g.setColor(Color.MAGENTA);
             g.drawString("GAME OVER", 30, 150);
             g.setFont(font);
-            g.drawString("Press 'R' to Reset!", 0, 200);
+            g.drawString("Press 'S' to Reset!", 0, 200);
         }
     }
 }

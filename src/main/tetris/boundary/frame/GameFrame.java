@@ -92,10 +92,11 @@ public class GameFrame extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_S:
-                if (!game.isPlaying() && !game.isGameOver()) game.startGame();
-                break;
-            case KeyEvent.VK_R:
-                if (game.isGameOver()) game.resetGame();
+                if (game.isGameOver()) {
+                    game.resetGame();
+                } else if (!game.isPlaying()) {
+                    game.startGame();
+                }
                 break;
             case KeyEvent.VK_P:
                 if (game.isPlaying()) game.pauseGame();
@@ -103,10 +104,14 @@ public class GameFrame extends JFrame implements KeyListener {
             case KeyEvent.VK_TAB:
                 if (!game.isPlaying()) game.setDifficulty((game.getDifficulty() + 1) % 3);
                 break;
-            case KeyEvent.VK_F1:
+            case KeyEvent.VK_R:
                 if (!game.isPlaying() && !game.isGameOver()) {
                     new RankingFrame();
                 }
+                break;
+            case KeyEvent.VK_Q:
+                gameTimer.cancel();
+                dispose();
                 break;
         }
     }
