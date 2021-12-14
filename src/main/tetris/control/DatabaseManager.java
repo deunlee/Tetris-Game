@@ -34,9 +34,10 @@ public class DatabaseManager {
             final ObjectInputStream ois   = new ObjectInputStream(fis);
             final ArrayList<User>   users = (ArrayList<User>)ois.readObject();
             ois.close();
+            System.out.println("getUser: " + users);
             return users;
         } catch (Exception e) {
-            System.out.println(e);
+//            System.out.println(e);
             return new ArrayList<User>();
         }
     }
@@ -57,6 +58,7 @@ public class DatabaseManager {
             final ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(users);
             oos.close();
+            System.out.println("setUser: " + users);
         } catch (Exception e) {
             System.out.println(e);
             return false;

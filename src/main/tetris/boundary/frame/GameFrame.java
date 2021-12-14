@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,12 +22,19 @@ public class GameFrame extends JFrame implements KeyListener {
     private       long            lastTime      = 0;
 
     public GameFrame() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setTitle("Tetris Game");
         setBounds(0, 0, 600, 600);
         setLayout(null);
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.BLACK);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent windowEvent) {
+                new MainFrame();
+                close();
+            }
+        });
 
         final ImagePanel imagePanel = new ImagePanel("image/logo.png");
         imagePanel.setLocation(10, 10);
@@ -107,15 +116,20 @@ public class GameFrame extends JFrame implements KeyListener {
             case KeyEvent.VK_R:
                 if (!game.isPlaying() && !game.isGameOver()) {
                     new RankingFrame();
+                    close();
                 }
                 break;
             case KeyEvent.VK_Q:
-                gameTimer.cancel();
-                dispose();
+                close();
                 break;
         }
     }
 
     @Override
     public void keyTyped(KeyEvent e) { }
+
+    private void close() {
+        gameTimer.cancel();
+        dispose();
+    }
 }

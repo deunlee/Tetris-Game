@@ -10,6 +10,17 @@ public class UserManager {
         return currentUser;
     }
 
+    public static void updateScore(int score) {
+        if (currentUser == null) {
+            return;
+        }
+        int bestScore = currentUser.getBestScore();
+        if (score > bestScore) {
+            currentUser.setBestScore(score);
+        }
+        db.updateUser(currentUser);
+    }
+
     public static boolean isUserExists(final String name) {
         return db.getUserByName(name) != null;
     }
@@ -20,6 +31,7 @@ public class UserManager {
         }
         final User user = new User(name, password, 0);
         db.updateUser(user);
+        currentUser = user;
         return true;
     }
 

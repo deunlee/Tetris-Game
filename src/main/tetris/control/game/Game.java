@@ -1,5 +1,6 @@
 package main.tetris.control.game;
 
+import main.tetris.control.UserManager;
 import main.tetris.entity.block.BaseBlock;
 import main.tetris.entity.block.BlockFactory;
 
@@ -65,7 +66,7 @@ public class Game {
         return (long)(((11 - getLevel()) * 0.05) * 1000 + 100 - difficulty * 100);
     }
 
-    public int getScore() {
+    private int getBlockScore() {
         return getLevel() * 3 + (board.getHeight() + 1 - distance);
     }
 
@@ -93,11 +94,12 @@ public class Game {
                 isPlaying  = false;
                 isPaused   = false;
                 isGameOver = true; // 게임 오버
+                UserManager.updateScore(getTotalScore());
             } else { // 현재 블럭은 더 내려갈 수 없지만, 빈 칸이 남았다면
                 isDropping = false;
                 board.setCurrentBlock(nextBlock); // 새로운 블럭 추가
                 nextBlock = BlockFactory.getRandomBlock();
-                totalScore += getScore();
+                totalScore += getBlockScore();
                 distance = 0; // 새로운 블럭이 내려간 거리 0으로 초기화
             }
         }

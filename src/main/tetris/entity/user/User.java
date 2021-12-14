@@ -23,4 +23,9 @@ public class User implements Serializable {
     public boolean checkPassword(final String password) {
         return this.password.equals(password);
     }
+
+    @Override
+    public String toString() {
+        return "User [name=" + name + ", score=" + bestScore + "]";
+    }
 }
