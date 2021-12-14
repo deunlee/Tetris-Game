@@ -11,7 +11,7 @@ public class MainFrame extends BaseFrame {
     public MainFrame() {
         super();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Tetris Game");
+        setTitle("Tetris Game - v.1.0.0");
         setBounds(0, 0, 600, 520);
         setLayout(null);
         setLocationRelativeTo(null);
