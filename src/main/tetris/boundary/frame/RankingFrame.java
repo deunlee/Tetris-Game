@@ -26,7 +26,7 @@ public class RankingFrame extends BaseFrame {
             }
         });
 
-        addLabel("R A N K I N G", 130, 30, 50, Color.WHITE);
+        addLabel("R A N K I N G", 130,  30, 50, Color.WHITE);
         addLabel("No.",           120, 120, 20, Color.WHITE);
         addLabel("Name",          200, 120, 20, Color.WHITE);
         addLabel("Best Score",    350, 120, 20, Color.WHITE);

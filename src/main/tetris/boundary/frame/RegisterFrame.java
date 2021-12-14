@@ -27,12 +27,12 @@ public class RegisterFrame extends BaseFrame {
             }
         });
 
-        addLabel("R E G I S T E R", 120, 30, 50, Color.WHITE);
-        addLabel("Name : ",     90, 150, 25, Color.WHITE);
-        addLabel("Password : ", 90, 220, 25, Color.WHITE);
-        txtName = addTextField    (220, 150, 290, 25);
-        txtPass = addPasswordField(220, 220, 290, 25);
-        addButton("Register", 120, 300, 360, 50);
+        addLabel("R E G I S T E R", 120,  30,  50, Color.WHITE);
+        addLabel("Name : ",          90, 150,  25, Color.WHITE);
+        addLabel("Password : ",      90, 220,  25, Color.WHITE);
+        txtName = addTextField     (220, 150, 290, 25);
+        txtPass = addPasswordField (220, 220, 290, 25);
+        addButton("Register",       120, 300, 360, 50);
 
         setVisible(true);
     }

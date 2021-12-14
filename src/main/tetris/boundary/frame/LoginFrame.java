@@ -27,9 +27,9 @@ public class LoginFrame extends BaseFrame {
             }
         });
 
-        addLabel("L O G I N", 180, 30, 50, Color.WHITE);
-        addLabel("Name : ",     90, 150, 25, Color.WHITE);
-        addLabel("Password : ", 90, 220, 25, Color.WHITE);
+        addLabel("L O G I N",      180,  30, 50, Color.WHITE);
+        addLabel("Name : ",         90, 150, 25, Color.WHITE);
+        addLabel("Password : ",     90, 220, 25, Color.WHITE);
         txtName = addTextField    (220, 150, 290, 25);
         txtPass = addPasswordField(220, 220, 290, 25);
         addButton("Login", 120, 300, 360, 50);
