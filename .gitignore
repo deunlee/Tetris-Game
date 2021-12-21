@@ -27,3 +27,4 @@ font/
 docs/*.ini
 *.db
 *.txt
+/bin/
